@@ -1,18 +1,10 @@
-export async function searchArticles() {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-    var urlencoded = new URLSearchParams();
-    urlencoded.append("content", "АВАРИЯ");
-
+export async function searchArticles(content) {
     var requestOptions = {
         method: 'GET',
-        headers: myHeaders,
-        body: urlencoded,
         redirect: 'follow'
     };
 
-    return fetch("http://localhost:3000/articles/find", requestOptions)
+    fetch("http://localhost:3000/articles/find?content=" + content, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
