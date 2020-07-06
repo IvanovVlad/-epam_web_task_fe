@@ -9,3 +9,11 @@ const signupButton = document.querySelector('#signup-btn');
 
 signinButton.addEventListener('click', () => signin.signIn(inputLogin.value, inputPassword.value));
 signupButton.addEventListener('click', () => signup.signUp(inputLogin.value, inputPassword.value));
+
+const getAllArticles = require('./js/articles/getAllArticles');
+const searchArticles = require('./js/articles/searchArticles');
+
+const inputSearch = document.querySelector('#search-text');
+const searchButton = document.querySelector('#get-articles');
+
+searchButton.addEventListener('click', () => searchArticles.searchArticles(inputSearch.value));
