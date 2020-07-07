@@ -11,26 +11,38 @@
 <body>
     <div class="wrapper">
         <div class="login-form">
+            <div class="title">Форма для входа</div>
             <label for="login-text">Логин</label>
-            <input type="text" name="123" id="login-text">
+            <input type="text" id="login-text">
             <label for="password-text">Пароль</label>
-            <input type="password" name="123" id="password-text">
+            <input type="password" id="password-text">
             <div class="buttons">
                 <button type="button" id="signin-btn">Войти</button>
                 <button type="button" id="signup-btn">Зарегистрироваться</button>
             </div>
         </div>
         <div class="search-form">
-            <label for="search-text">Ваш запрос</label>
-            <input type="text" name="456" id="search-text">
-            <button type="button" id="get-articles">Поиск</button>
+            <div class="title">Поиск по сайту</div>
+            <input type="text" id="search-text-site" placeholder="Ваш запрос">
+            <button type="button" id="get-articles-site">Поиск</button>
         </div>
-        <div class="articles-container">
-            <div class="title">My very unique title</div>
-            <div class="link">https://glorious-link.ua</div>
-            <div class="snippet">BindFirst is a unary function object that allows you to apply a binary function to a
-                predefined value and an operand. The reason that it's called BindFirst is that the
-                 ...</div>
+        <div class="search-form">
+            <div class="title">Поиск в яндексе</div>
+            <input type="text" id="search-text-web" placeholder="Ваш запрос">
+            <button type="button" id="get-articles-web">Поиск</button>
+        </div>
+        <div class="articles-wrapper">
+            <div class="title">Результаты</div>
+            <!--
+            <div class="articles-container">
+                <div class="article-title">My very unique title</div>
+                <div class="link">https://glorious-link.ua</div>
+                <div class="snippet">BindFirst is a unary function object that allows you to apply a binary function to
+                    a
+                    predefined value and an operand. The reason that it's called BindFirst is that the
+                     ...</div>
+            </div>
+            -->
         </div>
     </div>
     <script src="../dist/bundle.js"></script>

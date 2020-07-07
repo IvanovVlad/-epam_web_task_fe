@@ -1,19 +1,27 @@
-const signin = require('./js/auth/signin');
-const signup = require('./js/auth/signup');
-const getAllUsers = require('./js/auth/getAllUsers');
+const signIn = require('./js/auth/signin').signIn;
+const signUp = require('./js/auth/signup').signUp;
+const getAllUsers = require('./js/auth/getAllUsers').getAllUsers;
 
 const inputLogin = document.querySelector('#login-text');
 const inputPassword = document.querySelector('#password-text');
 const signinButton = document.querySelector('#signin-btn');
 const signupButton = document.querySelector('#signup-btn');
 
-signinButton.addEventListener('click', () => signin.signIn(inputLogin.value, inputPassword.value));
-signupButton.addEventListener('click', () => signup.signUp(inputLogin.value, inputPassword.value));
+signinButton.addEventListener('click', () => signIn(inputLogin.value, inputPassword.value));
+signupButton.addEventListener('click', () => signUp(inputLogin.value, inputPassword.value));
 
-const getAllArticles = require('./js/articles/getAllArticles');
-const searchArticles = require('./js/articles/searchArticles');
+const getAllArticles = require('./js/articles/getAllArticles').getAllArticles;
+const searchArticles = require('./js/articles/searchArticles').searchArticles;
 
-const inputSearch = document.querySelector('#search-text');
-const searchButton = document.querySelector('#get-articles');
+const inputSearchSite = document.querySelector('#search-text-site');
+const searchButtonSite = document.querySelector('#get-articles-site');
 
-searchButton.addEventListener('click', () => searchArticles.searchArticles(inputSearch.value));
+searchButtonSite.addEventListener('click', () => searchArticles(inputSearchSite.value));
+
+const searchInWeb = require('./js/search/searchInWeb').searchInWeb;
+const getSearchFromDb = require('./js/search/getSearchFromDb').getSearchFromDb;
+
+const inputSearchWeb = document.querySelector('#search-text-web');
+const searchButtonWeb = document.querySelector('#get-articles-web');
+
+searchButtonWeb.addEventListener('click', () => searchInWeb(inputSearchWeb.value))

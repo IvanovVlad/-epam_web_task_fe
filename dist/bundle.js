@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const signin = __webpack_require__(/*! ./js/auth/signin */ \"./src/js/auth/signin.js\");\r\nconst signup = __webpack_require__(/*! ./js/auth/signup */ \"./src/js/auth/signup.js\");\r\nconst getAllUsers = __webpack_require__(/*! ./js/auth/getAllUsers */ \"./src/js/auth/getAllUsers.js\");\r\n\r\nconst inputLogin = document.querySelector('#login-text');\r\nconst inputPassword = document.querySelector('#password-text');\r\nconst signinButton = document.querySelector('#signin-btn');\r\nconst signupButton = document.querySelector('#signup-btn');\r\n\r\nsigninButton.addEventListener('click', () => signin.signIn(inputLogin.value, inputPassword.value));\r\nsignupButton.addEventListener('click', () => signup.signUp(inputLogin.value, inputPassword.value));\r\n\r\nconst getAllArticles = __webpack_require__(/*! ./js/articles/getAllArticles */ \"./src/js/articles/getAllArticles.js\");\r\nconst searchArticles = __webpack_require__(/*! ./js/articles/searchArticles */ \"./src/js/articles/searchArticles.js\");\r\n\r\nconst inputSearch = document.querySelector('#search-text');\r\nconst searchButton = document.querySelector('#get-articles');\r\n\r\nsearchButton.addEventListener('click', () => searchArticles.searchArticles(inputSearch.value));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const signIn = __webpack_require__(/*! ./js/auth/signin */ \"./src/js/auth/signin.js\").signIn;\r\nconst signUp = __webpack_require__(/*! ./js/auth/signup */ \"./src/js/auth/signup.js\").signUp;\r\nconst getAllUsers = __webpack_require__(/*! ./js/auth/getAllUsers */ \"./src/js/auth/getAllUsers.js\").getAllUsers;\r\n\r\nconst inputLogin = document.querySelector('#login-text');\r\nconst inputPassword = document.querySelector('#password-text');\r\nconst signinButton = document.querySelector('#signin-btn');\r\nconst signupButton = document.querySelector('#signup-btn');\r\n\r\nsigninButton.addEventListener('click', () => signIn(inputLogin.value, inputPassword.value));\r\nsignupButton.addEventListener('click', () => signUp(inputLogin.value, inputPassword.value));\r\n\r\nconst getAllArticles = __webpack_require__(/*! ./js/articles/getAllArticles */ \"./src/js/articles/getAllArticles.js\").getAllArticles;\r\nconst searchArticles = __webpack_require__(/*! ./js/articles/searchArticles */ \"./src/js/articles/searchArticles.js\").searchArticles;\r\n\r\nconst inputSearchSite = document.querySelector('#search-text-site');\r\nconst searchButtonSite = document.querySelector('#get-articles-site');\r\n\r\nsearchButtonSite.addEventListener('click', () => searchArticles(inputSearchSite.value));\r\n\r\nconst searchInWeb = __webpack_require__(/*! ./js/search/searchInWeb */ \"./src/js/search/searchInWeb.js\").searchInWeb;\r\nconst getSearchFromDb = __webpack_require__(/*! ./js/search/getSearchFromDb */ \"./src/js/search/getSearchFromDb.js\").getSearchFromDb;\r\n\r\nconst inputSearchWeb = document.querySelector('#search-text-web');\r\nconst searchButtonWeb = document.querySelector('#get-articles-web');\r\n\r\nsearchButtonWeb.addEventListener('click', () => searchInWeb(inputSearchWeb.value))\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -105,7 +105,7 @@ eval("const signin = __webpack_require__(/*! ./js/auth/signin */ \"./src/js/auth
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAllArticles\", function() { return getAllArticles; });\nasync function getAllArticles() {\r\n    var urlencoded = new URLSearchParams();\r\n\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        body: urlencoded,\r\n        redirect: 'follow'\r\n    };\r\n\r\n    return fetch(\"http://localhost:3000/articles\", requestOptions)\r\n        .then(response => response.text())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/getAllArticles.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAllArticles\", function() { return getAllArticles; });\nasync function getAllArticles() {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/articles\", requestOptions)\r\n        .then(response => response.text())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/getAllArticles.js?");
 
 /***/ }),
 
@@ -117,7 +117,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchArticles\", function() { return searchArticles; });\nasync function searchArticles() {\r\n    var myHeaders = new Headers();\r\n    myHeaders.append(\"Content-Type\", \"application/x-www-form-urlencoded\");\r\n\r\n    var urlencoded = new URLSearchParams();\r\n    urlencoded.append(\"content\", \"АВАРИЯ\");\r\n\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        headers: myHeaders,\r\n        body: urlencoded,\r\n        redirect: 'follow'\r\n    };\r\n\r\n    return fetch(\"http://localhost:3000/articles/find\", requestOptions)\r\n        .then(response => response.text())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/searchArticles.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchArticles\", function() { return searchArticles; });\nasync function searchArticles(content) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/articles/find?content=\" + content, requestOptions)\r\n        .then(response => response.text())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/searchArticles.js?");
 
 /***/ }),
 
@@ -154,6 +154,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"signUp\", function() { return signUp; });\nfunction signUp(login, password) {\r\n    var myHeaders = new Headers();\r\n    myHeaders.append(\"Content-Type\", \"application/x-www-form-urlencoded\");\r\n\r\n    var urlencoded = new URLSearchParams();\r\n    urlencoded.append(\"login\", login);\r\n    urlencoded.append(\"password\", password);\r\n\r\n    var requestOptions = {\r\n        method: 'POST',\r\n        headers: myHeaders,\r\n        body: urlencoded,\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/auth/signup\", requestOptions)\r\n        .then(response => {\r\n            if (!response.ok) {\r\n                throw new Error(`${response.status}\\nНенадежный пароль`);\r\n            }\r\n            else {\r\n                alert('Пользователь зарегестрирован')\r\n            }\r\n        })\r\n        .catch(error => alert(error));\r\n}\n\n//# sourceURL=webpack:///./src/js/auth/signup.js?");
+
+/***/ }),
+
+/***/ "./src/js/search/getSearchFromDb.js":
+/*!******************************************!*\
+  !*** ./src/js/search/getSearchFromDb.js ***!
+  \******************************************/
+/*! exports provided: getSearchFromDb */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getSearchFromDb\", function() { return getSearchFromDb; });\nasync function getSearchFromDb() {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/search/db\", requestOptions)\r\n        .then(response => response.text())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/search/getSearchFromDb.js?");
+
+/***/ }),
+
+/***/ "./src/js/search/searchInWeb.js":
+/*!**************************************!*\
+  !*** ./src/js/search/searchInWeb.js ***!
+  \**************************************/
+/*! exports provided: searchInWeb */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchInWeb\", function() { return searchInWeb; });\nasync function searchInWeb(text) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/search/?query=\" + text, requestOptions)\r\n        .then(response => response.json())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/search/searchInWeb.js?");
 
 /***/ })
 
