@@ -4,23 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="/src/style.css">
     <title>Frontend app for ewb</title>
 </head>
 
 <body>
-    <div>
-        <label for="login-text">Логин</label>
-        <input type="text" name="123" id="login-text">
-        <label for="password-text">Пароль</label>
-        <input type="password" name="123" id="password-text">
-        <button type="button" id="signin-btn">Войти</button>
-        <button type="button" id="signup-btn">Зарегистрироваться</button>
-    </div>
-    <div>
-        <label for="search-text">Ваш запрос</label>
-        <input type="text" name="456" id="search-text">
-        <button type="button" id="get-articles">Поиск</button>
+    <div class="wrapper">
+        <div class="login-form">
+            <label for="login-text">Логин</label>
+            <input type="text" name="123" id="login-text">
+            <label for="password-text">Пароль</label>
+            <input type="password" name="123" id="password-text">
+            <div class="buttons">
+                <button type="button" id="signin-btn">Войти</button>
+                <button type="button" id="signup-btn">Зарегистрироваться</button>
+            </div>
+        </div>
+        <div class="search-form">
+            <label for="search-text">Ваш запрос</label>
+            <input type="text" name="456" id="search-text">
+            <button type="button" id="get-articles">Поиск</button>
+        </div>
+        <div class="articles-container">
+            <div class="title">My very unique title</div>
+            <div class="link">https://glorious-link.ua</div>
+            <div class="snippet">BindFirst is a unary function object that allows you to apply a binary function to a
+                predefined value and an operand. The reason that it's called BindFirst is that the
+                 ...</div>
+        </div>
     </div>
     <script src="../dist/bundle.js"></script>
 </body>
