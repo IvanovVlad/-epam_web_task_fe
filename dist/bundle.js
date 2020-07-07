@@ -117,7 +117,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchArticles\", function() { return searchArticles; });\nconst renderOne = __webpack_require__(/*! ../render-search-results */ \"./src/js/render-search-results.js\").renderOne;\r\n\r\nasync function searchArticles(content) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/articles/find?content=\" + content, requestOptions)\r\n        .then(response => response.json())\r\n        .then(result => {\r\n            if (Array.isArray(result)) {\r\n                result.forEach(el => renderOne('что-то', 'из дб', el.content));\r\n            }\r\n        })\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/searchArticles.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchArticles\", function() { return searchArticles; });\nconst renderArray = __webpack_require__(/*! ../render-search-results */ \"./src/js/render-search-results.js\").renderArray;\r\n\r\nasync function searchArticles(content) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/articles/find?content=\" + content, requestOptions)\r\n        .then(response => response.json())\r\n        .then(result => {\r\n            if (Array.isArray(result)) {\r\n                renderArray(result);\r\n            }\r\n        })\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/articles/searchArticles.js?");
 
 /***/ }),
 
@@ -189,7 +189,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchInWeb\", function() { return searchInWeb; });\nasync function searchInWeb(text) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/search/?query=\" + text, requestOptions)\r\n        .then(response => response.json())\r\n        .then(result => console.log(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/search/searchInWeb.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"searchInWeb\", function() { return searchInWeb; });\nconst renderArray = __webpack_require__(/*! ../render-search-results */ \"./src/js/render-search-results.js\").renderArray;\r\n\r\nasync function searchInWeb(text) {\r\n    var requestOptions = {\r\n        method: 'GET',\r\n        redirect: 'follow'\r\n    };\r\n\r\n    fetch(\"http://localhost:3000/search/?query=\" + text, requestOptions)\r\n        .then(response => response.json())\r\n        .then(result => renderArray(result))\r\n        .catch(error => console.log('error', error));\r\n}\n\n//# sourceURL=webpack:///./src/js/search/searchInWeb.js?");
 
 /***/ })
 

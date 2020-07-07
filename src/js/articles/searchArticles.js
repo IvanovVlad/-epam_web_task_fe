@@ -1,4 +1,4 @@
-const renderOne = require('../render-search-results').renderOne;
+const renderArray = require('../render-search-results').renderArray;
 
 export async function searchArticles(content) {
     var requestOptions = {
@@ -10,7 +10,7 @@ export async function searchArticles(content) {
         .then(response => response.json())
         .then(result => {
             if (Array.isArray(result)) {
-                result.forEach(el => renderOne('что-то', 'из дб', el.content));
+                renderArray(result);
             }
         })
         .catch(error => console.log('error', error));
