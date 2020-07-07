@@ -25,5 +25,7 @@ const getSearchFromDb = require('./js/search/getSearchFromDb').getSearchFromDb;
 
 const inputSearchWeb = document.querySelector('#search-text-web');
 const searchButtonWeb = document.querySelector('#get-articles-web');
+const showAllWeb = document.querySelector('#show-all-web');
 
-searchButtonWeb.addEventListener('click', () => searchInWeb(inputSearchWeb.value))
+searchButtonWeb.addEventListener('click', () => searchInWeb(inputSearchWeb.value));
+showAllWeb.addEventListener('click', () => getSearchFromDb());

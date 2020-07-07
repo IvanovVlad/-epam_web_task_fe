@@ -1,4 +1,4 @@
-const renderOne = require('../render-search-results').renderOne;
+const renderArray = require('../render-search-results').renderArray;
 
 export async function getAllArticles() {
     var requestOptions = {
@@ -8,8 +8,6 @@ export async function getAllArticles() {
 
     fetch("http://localhost:3000/articles", requestOptions)
         .then(response => response.json())
-        .then(result => {
-            result.forEach(el => renderOne('что-то', 'из дб', el.content));
-        })
+        .then(result => renderArray(result))
         .catch(error => console.log('error', error));
 }
