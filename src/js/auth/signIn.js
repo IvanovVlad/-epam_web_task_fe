@@ -19,8 +19,14 @@ export function signIn(login, password) {
             if (result.error) {
                 throw new Error(result.message);
             } else {
-                console.log(result);
+                success(result.username);
             }
         })
         .catch(error => alert(error));
+}
+
+function success(username) {
+    document.querySelector('#login-text').disabled = true;
+    document.querySelector('#password-text').disabled = true;
+    alert(`Привет ${username}`);
 }

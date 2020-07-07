@@ -15,8 +15,10 @@ const searchArticles = require('./js/articles/searchArticles').searchArticles;
 
 const inputSearchSite = document.querySelector('#search-text-site');
 const searchButtonSite = document.querySelector('#get-articles-site');
+const showAllArticles = document.querySelector('#show-all-site');
 
 searchButtonSite.addEventListener('click', () => searchArticles(inputSearchSite.value));
+showAllArticles.addEventListener('click', () => getAllArticles());
 
 const searchInWeb = require('./js/search/searchInWeb').searchInWeb;
 const getSearchFromDb = require('./js/search/getSearchFromDb').getSearchFromDb;
